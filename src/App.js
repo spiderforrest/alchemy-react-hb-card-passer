@@ -57,18 +57,7 @@ function App() {
         <Player player={3} hand={playerThreeHand} />
         <CardList cards={deck} player={'deck'} />
       </section>
-      <section>
-        {selectedCard && (
-          <ExecutePassButton
-            passCard={passCard}
-            setFrom={setFrom}
-            from={from}
-            to={to}
-            selectedCard={selectedCard}
-            setSelectedCard={setSelectedCard}
-          />
-        )}
-      </section>
+      <section>{selectedCard && <ExecutePassButton passCard={passCard} />}</section>
     </div>
   );
 }
