@@ -25,3 +25,6 @@ This application allows you to pass cards back and forth between users and a dec
 | GameContext.js properly exports shared state through context              | 2      |
 | GameProvider added to index.js                                            | 2      |
 | Components refactored to use GameContext.js instead of prop drilling      | 2      |
+
+## Wireframe
+![wireframe](./wireframe.png)
