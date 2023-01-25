@@ -6,47 +6,8 @@ import ExecutePassButton from './components/ExecutePassButton';
 import { GameContext } from './context/GameContext.js';
 
 function App() {
-  const {
-    deck,
-    setDeck,
-    playerOneHand,
-    setPlayerOneHand,
-    selectedCard,
-    setSelectedCard,
-    playerTwoHand,
-    setPlayerTwoHand,
-    playerThreeHand,
-    setPlayerThreeHand,
-    from,
-    setFrom,
-    to,
-  } = useContext(GameContext);
-
-  function findCardIndex(value, suit, cards) {
-    return cards.findIndex((card) => card.value === value && card.suit === suit);
-  }
-
-  function passCard(card) {
-    const playerHands = [playerOneHand, playerTwoHand, playerThreeHand];
-    const playerHandSetFunctions = [setPlayerOneHand, setPlayerTwoHand, setPlayerThreeHand];
-
-    // arrays start at zero, but our players start at 1 :shrug:
-    const toHand = playerHands[to - 1] || deck;
-    const fromHand = playerHands[from - 1] || deck;
-
-    const toSetFunction = playerHandSetFunctions[to - 1] || setDeck;
-    const fromSetFunction = playerHandSetFunctions[from - 1] || setDeck;
-
-    const cardToMoveIndex = findCardIndex(card.value, card.suit, fromHand);
-    const [cardToMove] = fromHand.splice(cardToMoveIndex, 1);
-
-    toHand.push(cardToMove);
-
-    toSetFunction([...toHand]);
-    fromSetFunction([...fromHand]);
-
-    setSelectedCard(null);
-  }
+  const { deck, playerOneHand, selectedCard, playerTwoHand, playerThreeHand, passCard } =
+    useContext(GameContext);
 
   return (
     <div className="App">
